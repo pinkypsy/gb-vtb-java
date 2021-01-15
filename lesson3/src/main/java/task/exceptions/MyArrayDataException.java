@@ -1,6 +1,6 @@
 package task.exceptions;
 
-public class MyArrayDataException extends NumberFormatException {
+public class MyArrayDataException extends MyArrayBaseException {
 
     public MyArrayDataException(String message) {
         super(message);

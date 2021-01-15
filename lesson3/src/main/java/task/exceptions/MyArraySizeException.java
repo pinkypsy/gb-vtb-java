@@ -1,6 +1,6 @@
 package task.exceptions;
 
-public class MyArraySizeException extends RuntimeException {
+public class MyArraySizeException extends MyArrayBaseException {
 
     public MyArraySizeException(String message) {
         super(message);

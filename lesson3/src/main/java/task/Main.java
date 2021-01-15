@@ -10,10 +10,10 @@ public class Main {
         int result = 0;
         try {
             result = new Main().calcSum(
-                    new String[][] { { "1", "0", "0", "0", "0" },
+                    new String[][] { { "-1", "0", "0", "0", "0" },
                             { "1", "1", "0", "0", "0" },
-                            { "0", "0", "0", "0", "0" },
-                            { "1", "tr", "0", "0", "0" } });
+                            { "0", "2", "O", "0", "0" },
+                            { "1", "10", "0", "0", "0" } });
         } catch (MyArraySizeException exc) {
             System.out.println(exc.getMessage());
         }
@@ -21,10 +21,9 @@ public class Main {
     }
 
     int calcSum(String[][] matrix) {
-        verifyNumberOfRows(matrix);
+        verifyMatrixSize(matrix);
         int sum = 0;
         for (int row = 0; row < matrix.length; row++) {
-            verifyNumberOfColumns(matrix[row], row);
             for (int column = 0; column < matrix[row].length; column++) {
                 String currentValue = matrix[row][column];
                 try {
@@ -44,10 +43,10 @@ public class Main {
                 value, i, j);
     }
 
-    /*void verifyMatrixSize(String[][] matrix) throws MyArraySizeException {
+    void verifyMatrixSize(String[][] matrix) throws MyArraySizeException {
         verifyNumberOfRows(matrix);
         verifyNumberOfColumns(matrix);
-    }*/
+    }
 
     private void verifyNumberOfRows(String[][] matrix)
             throws MyArraySizeException {
@@ -59,9 +58,9 @@ public class Main {
         }
     }
 
-    private void verifyNumberOfColumns(String[] columns, int row)
+    private void verifyNumberOfColumns(String[][] matrix)
             throws MyArraySizeException {
-       /* for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {
             String[] columns = matrix[i];
             if (columns.length != columnConstraint) {
                 throw new MyArraySizeException(
@@ -69,12 +68,6 @@ public class Main {
                                 + columnConstraint + " Actual: "
                                 + columns.length + " at the row #" + i);
             }
-        }*/
-        if (columns.length != columnConstraint) {
-            throw new MyArraySizeException(
-                    "Column quantity isn't correct." + " " + "Expected: "
-                            + columnConstraint + " Actual: "
-                            + columns.length + " at the row #" + row);
         }
     }
 }
