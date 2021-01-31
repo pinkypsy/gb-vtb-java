@@ -1,30 +1,36 @@
 import fruits.Apple;
-import fruits.Box;
-import fruits.Fruit;
+import fruits.FruitBox;
 import fruits.Orange;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World");
-        ArrayList<String> list = new ArrayList<>(
-                Arrays.asList("Z", "BBB", "B", "a", "c", "b", "A"));
-        System.out.println(list);
 
-        String[] array = { "Z", "BBB", "B", "a", "c", "b", "A" };
+        FruitBox<Orange> orangeBox = new FruitBox<>();
+        orangeBox.addFruit(new Orange(10));
+        orangeBox.addFruit(new Orange(20));
+        orangeBox.addFruit(new Orange(5));
 
-        swap(array, 1, 3);
-        System.out.println(Arrays.toString(array));
+        FruitBox<Apple> appleBox = new FruitBox<>();
+        appleBox.addFruit(new Apple(3));
+        appleBox.addFruit(new Apple(5));
+        appleBox.addFruit(new Apple(1));
 
-        System.out.println(arrayToList(array).getClass());
+        float result = 0;
+        for (int i = 0; i < orangeBox.getBoxSize(); i++) {
+            result += orangeBox.get(i).getWeight();
+        }
 
-        Box <Orange> orangeBox = new Box<>();
-        orangeBox.addFruit(new Orange());
-        orangeBox.addFruit(new Orange());
+
+        System.out.println("Orange box: " + result);
+
+        result = 0;
+        for (int i = 0; i < appleBox.getBoxSize(); i++) {
+            result += appleBox.get(i).getWeight();
+        }
+        System.out.println("Apple box: " + result);
 
     }
 
