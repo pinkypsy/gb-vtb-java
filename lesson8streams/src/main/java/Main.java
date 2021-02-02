@@ -59,5 +59,21 @@ public class Main {
         //                .stream()
         //                .max(Comparator.comparing(Map.Entry::getValue))
         //                .ifPresent(System.out::println);
+
+        List<String> names = new ArrayList<>(Arrays.asList("liza", "anna",
+                "sonya", "jack", "john", "daffny"));
+
+        List<String> namesModified =
+                names.stream()
+                        .map(name ->
+                                name.substring(0,1)
+                                        .toUpperCase()
+                                        + name.substring(1))
+                        .sorted(String::compareTo).collect(Collectors.toList());
+
+        System.out.println(namesModified);
+        names.stream().map(name -> name.substring(0,1).toUpperCase()
+                + name.substring(1)).sorted(String::compareTo).forEach(System.out::println);
+
     }
 }
