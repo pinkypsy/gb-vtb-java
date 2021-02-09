@@ -51,7 +51,7 @@ public class Main {
                 .entrySet().stream()
                 .max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
 
-        System.out.println(mostFreqWord);
+        System.out.println("mostFreqWord " + mostFreqWord);
 
         //        Stream.of(1, 3, 4, 3, 4, 3, 2, 3, 3, 3, 3, 3)
         //                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
@@ -61,7 +61,7 @@ public class Main {
         //                .ifPresent(System.out::println);
 
         List<String> names = new ArrayList<>(Arrays.asList("liza", "anna",
-                "sonya", "jack", "john", "daffny"));
+                "sonya", "ajack", "john", "daffny"));
 
         List<String> namesModified =
                 names.stream()
@@ -72,8 +72,11 @@ public class Main {
                         .sorted(String::compareTo).collect(Collectors.toList());
 
         System.out.println(namesModified);
-        names.stream().map(name -> name.substring(0,1).toUpperCase()
-                + name.substring(1)).sorted(String::compareTo).forEach(System.out::println);
-
+        long numOfWordsBeginningWithA = names.stream().map(name ->
+                name.substring(0,1)
+                        .toUpperCase()
+                        + name.substring(1)).filter(name -> name.startsWith(
+                                "A")).count();
+        System.out.println(numOfWordsBeginningWithA);
     }
 }

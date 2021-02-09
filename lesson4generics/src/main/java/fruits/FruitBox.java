@@ -16,7 +16,6 @@ public class FruitBox<T extends Fruit>  {
     public void addFruit (T... fruits){
         box.addAll(Arrays.asList(fruits));
         boxSize++;
-        HashMap
     }
 
     public T get(int i){
